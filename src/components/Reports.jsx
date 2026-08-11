@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Download, FileText, Calendar, Horse, Heart, Filter } from 'lucide-react';
+import { Download, FileText, Calendar, Heart, Filter } from 'lucide-react';
 import jsPDF from 'jspdf';
 import Papa from 'papaparse';
 
@@ -377,7 +377,7 @@ function Reports({ horses, tasks, healthRecords }) {
             <div className="summary-icon">
               {reportType === 'tasks' && <Calendar size={32} />}
               {reportType === 'health' && <Heart size={32} />}
-              {reportType === 'horses' && <Horse size={32} />}
+              {reportType === 'horses' && <span className="text-3xl">🐴</span>}
             </div>
             <div className="summary-content">
               <h4>Report Summary</h4>

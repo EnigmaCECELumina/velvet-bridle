@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Horse, Calendar, Heart, AlertCircle, TrendingUp } from 'lucide-react';
+import { Calendar, Heart, AlertCircle, TrendingUp } from 'lucide-react';
 
 function Dashboard({ horses, tasks, healthRecords }) {
   const today = new Date();
@@ -40,7 +40,7 @@ function Dashboard({ horses, tasks, healthRecords }) {
     {
       label: 'Total Horses',
       value: horses.length,
-      icon: Horse,
+      icon: '🐴',
       color: 'var(--color-antique-gold)',
       link: '/horses'
     },

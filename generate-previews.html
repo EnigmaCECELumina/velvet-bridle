@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Velvet Bridle - Preview Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            color: #f5f0e8;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #c9a227;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .preview-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid #c9a227;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+        
+        .preview-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: #c9a227;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        
+        .preview-image {
+            width: 100%;
+            border: 2px solid #c9a227;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: #0a0a0a;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c9a227;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #c9a227, #8b7355);
+            color: #0a0a0a;
+            border: 2px solid #d4af37;
+            padding: 12px 24px;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .button:hover {
+            background: linear-gradient(135deg, #d4af37, #c9a227);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .screenshot-instructions {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid #c9a227;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .screenshot-instructions h2 {
+            font-family: 'Cinzel', serif;
+            color: #c9a227;
+            margin-bottom: 1rem;
+        }
+        
+        .screenshot-instructions ol {
+            margin-left: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .screenshot-instructions li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+        }
+        
+        .status.ready {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+        }
+        
+        .status.pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #FFC107;
+            border: 1px solid #FFC107;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐴 The Velvet Bridle - Preview Generator</h1>
+        
+        <div class="screenshot-instructions">
+            <h2>📸 Screenshot Instructions</h2>
+            <ol>
+                <li>Open the app preview by clicking the button below</li>
+                <li>Navigate to different pages to capture various features</li>
+                <li>Use browser screenshot tools (Windows: Win+Shift+S, Mac: Cmd+Shift+4)</li>
+li>For high-quality mockups, use browser DevTools (F12) → Device Toolbar to set specific dimensions</li>
+            </ol>
+        </div>
+        
+        <div class="preview-grid">
+            <div class="preview-card">
+                <h3>🖥️ Desktop Preview</h3>
+                <div class="preview-image">
+                    <p>Click below to open full-size preview</p>
+                </div>
+                <button onclick="window.open('http://localhost:5173', '_blank')" class="button">
+                    Open App Preview
+                </button>
+            </div>
+            
+            <div class="preview-card">
+                <h3>📱 Mobile Preview</h3>
+                <div class="preview-image">
+                    <p>Open preview and use DevTools to simulate mobile</p>
+                </div>
+                <button onclick="window.open('http://localhost:5173', '_blank')" class="button">
+                    Open for Mobile Screenshot
+                </button>
+            </div>
+            
+            <div class="preview-card">
+                <h3>🎨 Dashboard View</h3>
+                <div class="preview-image">
+                    <p>Capture the main dashboard with stats</p>
+                </div>
+                <button onclick="window.open('http://localhost:5173', '_blank')" class="button">
+                    Capture Dashboard
+                </button>
+            </div>
+            
+            <div class="preview-card">
+                <h3>🐴 Horse Profiles</h3>
+                <div class="preview-image">
+                    <p>Capture horse profile cards and details</p>
+                </div>
+                <button onclick="window.open('http://localhost:5173/horses', '_blank')" class="button">
+                    Capture Horse Profiles
+                </button>
+            </div>
+            
+            <div class="preview-card">
+                <h3>📅 Calendar View</h3>
+                <div class="preview-image">
+                    <p>Capture the interactive calendar with tasks</p>
+                </div>
+                <button onclick="window.open('http://localhost:5173/scheduler', '_blank')" class="button">
+                    Capture Calendar
+                </button>
+            </div>
+            
+            <div class="preview-card">
+                <h3>🏥 Health Tracking</h3>
+                <div class="preview-image">
+                    <p>Capture health records and tracking</p>
+                </div>
+                <button onclick="window.open('http://localhost:5173/health', '_blank')" class="button">
+                    Capture Health View
+                </button>
+            </div>
+        </div>
+        
+        <div class="screenshot-instructions">
+            <h2>🎯 Recommended Screenshots for Marketing</h2>
+            <ol>
+                <li><strong>Dashboard</strong> - Main overview with stats and activity</li>
+                <li><strong>Horse Profiles</strong> - Show profile cards with sample data</li>
+                <li><strong>Calendar View</strong> - Show the month view with task indicators</li>
+                <li><strong>Health Records</strong> - Show health tracking cards</li>
+                <li><strong>Mobile Views</strong> - Capture responsive design</li>
+            </ol>
+        </div>
+        
+        <div class="screenshot-instructions">
+            <h2>📐 Recommended Dimensions</h2>
+            <ul>
+                <li><strong>Gumroad Banner:</strong> 1600×400px</li>
+                <li><strong>Payhip Thumbnail:</strong> 800×800px (square)</li>
+                <li><strong>Social Media:</strong> 1080×1080px (square)</li>
+                <li><strong>Product Screenshots:</strong> 1200×800px (landscape)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

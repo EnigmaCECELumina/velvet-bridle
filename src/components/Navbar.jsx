@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Horse, Calendar, Heart, FileText } from 'lucide-react';
+import { Home, Calendar, Heart, FileText } from 'lucide-react';
 import NotificationSystem from './NotificationSystem';
 
 function Navbar({ tasks, healthRecords }) {
@@ -7,7 +7,7 @@ function Navbar({ tasks, healthRecords }) {
 
   const navItems = [
     { path: '/', label: 'Dashboard', icon: Home },
-    { path: '/horses', label: 'Horses', icon: Horse },
+    { path: '/horses', label: 'Horses', icon: '🐴' },
     { path: '/scheduler', label: 'Scheduler', icon: Calendar },
     { path: '/health', label: 'Health', icon: Heart },
     { path: '/reports', label: 'Reports', icon: FileText },
