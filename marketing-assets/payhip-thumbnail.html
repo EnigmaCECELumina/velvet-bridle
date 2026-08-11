@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Velvet Bridle - Payhip Thumbnail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 800px;
+            height: 800px;
+            background: linear-gradient(145deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            font-family: 'Cinzel', serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Ornate gothic frame */
+        .gothic-frame {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            border: 4px solid #c9a227;
+            border-radius: 12px;
+            pointer-events: none;
+            box-shadow: 0 0 30px rgba(201, 162, 39, 0.3);
+        }
+
+        .gothic-frame::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border: 1px solid #d4af37;
+            border-radius: 16px;
+            opacity: 0.4;
+        }
+
+        /* Corner ornaments */
+        .corner-ornament {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #c9a227;
+            opacity: 0.5;
+        }
+
+        .corner-ornament::before {
+            content: '❧';
+            position: absolute;
+            font-size: 24px;
+            color: #c9a227;
+            opacity: 0.6;
+        }
+
+        .corner-tl {
+            top: 40px;
+            left: 40px;
+            border-right: none;
+            border-bottom: none;
+        }
+        .corner-tl::before {
+            top: -10px;
+            left: -10px;
+        }
+
+        .corner-tr {
+            top: 40px;
+            right: 40px;
+            border-left: none;
+            border-bottom: none;
+        }
+        .corner-tr::before {
+            top: -10px;
+            right: -10px;
+            transform: scaleX(-1);
+        }
+
+        .corner-bl {
+            bottom: 40px;
+            left: 40px;
+            border-right: none;
+            border-top: none;
+        }
+        .corner-bl::before {
+            bottom: -10px;
+            left: -10px;
+            transform: scaleY(-1);
+        }
+
+        .corner-br {
+            bottom: 40px;
+            right: 40px;
+            border-left: none;
+            border-top: none;
+        }
+        .corner-br::before {
+            bottom: -10px;
+            right: -10px;
+            transform: scale(-1);
+        }
+
+        /* App preview container */
+        .app-preview {
+            position: absolute;
+            top: 80px;
+            left: 80px;
+            right: 80px;
+            bottom: 180px;
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 2px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Mock app header */
+        .app-header {
+            background: linear-gradient(180deg, #1a1a1a, #0a0a0a);
+            border-bottom: 2px solid #c9a227;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .app-logo {
+            font-size: 24px;
+        }
+
+        .app-title {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: #c9a227;
+            letter-spacing: 2px;
+        }
+
+        /* Mock app content */
+        .app-content {
+            flex: 1;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .mock-card {
+            background: rgba(201, 162, 39, 0.05);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .mock-card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .mock-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid #c9a227;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .mock-title {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            color: #c9a227;
+        }
+
+        .mock-detail {
+            font-size: 9px;
+            color: #f5f0e8;
+            opacity: 0.7;
+            margin: 3px 0;
+        }
+
+        /* Product name section */
+        .product-section {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            right: 50px;
+            text-align: center;
+        }
+
+        .product-name {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: #c9a227;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-shadow: 0 0 15px rgba(201, 162, 39, 0.4);
+        }
+
+        .product-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: #f5f0e8;
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        /* Decorative elements */
+        .gemstone {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #c9a227, #4a0e1a);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+        }
+
+        .gemstone:nth-child(1) { top: 35px; left: 50%; transform: translateX(-50%); }
+        .gemstone:nth-child(2) { bottom: 35px; left: 50%; transform: translateX(-50%); }
+        .gemstone:nth-child(3) { top: 50%; left: 35px; transform: translateY(-50%); }
+        .gemstone:nth-child(4) { top: 50%; right: 35px; transform: translateY(-50%); }
+
+        .divider {
+            position: absolute;
+            bottom: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a227, transparent);
+        }
+
+        .divider::before {
+            content: '✦';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #c9a227;
+            font-size: 14px;
+        }
+
+        /* Background texture */
+        .texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(201, 162, 39, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(74, 14, 26, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Sparkle effects */
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #c9a227;
+            border-radius: 50%;
+            animation: sparkle 2.5s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        .sparkle:nth-child(5) { top: 20%; left: 25%; animation-delay: 0s; }
+        .sparkle:nth-child(6) { top: 30%; left: 75%; animation-delay: 0.3s; }
+        .sparkle:nth-child(7) { top: 70%; left: 20%; animation-delay: 0.6s; }
+        .sparkle:nth-child(8) { top: 80%; left: 70%; animation-delay: 0.9s; }
+    </style>
+</head>
+<body>
+    <div class="texture"></div>
+    
+    <div class="gothic-frame"></div>
+    
+    <div class="corner-ornament corner-tl"></div>
+    <div class="corner-ornament corner-tr"></div>
+    <div class="corner-ornament corner-bl"></div>
+    <div class="corner-ornament corner-br"></div>
+    
+    <div class="gemstone"></div>
+    <div class="gemstone"></div>
+    <div class="gemstone"></div>
+    <div class="gemstone"></div>
+    
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    
+    <div class="app-preview">
+        <div class="app-header">
+            <span class="app-logo">🐴</span>
+            <span class="app-title">The Velvet Bridle</span>
+        </div>
+        <div class="app-content">
+            <div class="mock-card">
+                <div class="mock-card-header">
+                    <div class="mock-avatar">🐴</div>
+                    <span class="mock-title">Midnight Shadow</span>
+                </div>
+                <div class="mock-detail">Friesian • 8 years</div>
+                <div class="mock-detail">Advanced dressage</div>
+            </div>
+            <div class="mock-card">
+                <div class="mock-card-header">
+                    <div class="mock-avatar">📅</div>
+                    <span class="mock-title">Today's Tasks</span>
+                </div>
+                <div class="mock-detail">Morning feeding</div>
+                <div class="mock-detail">Grooming session</div>
+            </div>
+            <div class="mock-card">
+                <div class="mock-card-header">
+                    <div class="mock-avatar">🏥</div>
+                    <span class="mock-title">Health Alert</span>
+                </div>
+                <div class="mock-detail">Vaccination due</div>
+                <div class="mock-detail">In 7 days</div>
+            </div>
+            <div class="mock-card">
+                <div class="mock-card-header">
+                    <div class="mock-avatar">📊</div>
+                    <span class="mock-title">Quick Stats</span>
+                </div>
+                <div class="mock-detail">3 horses</div>
+                <div class="mock-detail">12 active tasks</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="product-section">
+        <h1 class="product-name">The Velvet Bridle</h1>
+        <p class="product-subtitle">Gothic Luxury Equine Planner</p>
+    </div>
+</body>
+</html>
